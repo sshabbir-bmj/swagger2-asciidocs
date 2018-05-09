@@ -30,7 +30,13 @@ import io.swagger.annotations.ApiResponses;
  *
  */
 @RestController
-@Api("/mapping")
+//@formatter:off
+@Api(value = "/mapping",
+     tags = "Create mapping entries",
+     produces = "application/json",
+     consumes = "application/json",
+     protocols = "http, https")
+//@formatter:on
 @RequestMapping(value = "/mapping", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ContentMappingController {
 
@@ -48,6 +54,8 @@ public class ContentMappingController {
 	    @ApiResponse(code = 201, message = "Created", response = ContentMapping.class),
 	    @ApiResponse(code = 400, message = "Bad request", response = ErrorDto.class)
     })
+    //@formatter:on
+
     @PostMapping("/translation")
     @ResponseBody
     public ResponseEntity<ContentMapping> createLanguageVariantMapping(

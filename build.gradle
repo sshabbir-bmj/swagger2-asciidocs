@@ -15,6 +15,7 @@ buildscript {
 		classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.3'
         classpath "io.github.swagger2markup:swagger2markup:${swagger2markupVersion}"
         classpath "io.github.swagger2markup:swagger2markup-import-files-ext:${swagger2markupVersion}"
+        classpath "org.asciidoctor:asciidoctorj-epub3:1.5.0-alpha.6"
 	}
 }
 
@@ -22,6 +23,7 @@ plugins {
     id 'java'
     id 'eclipse'
     id "org.springframework.boot" version "1.5.8.RELEASE"
+    id 'com.benjaminsproule.swagger' version '1.0.0'
 }
 
 apply plugin: 'io.github.swagger2markup'
@@ -48,6 +50,7 @@ dependencies {
 
     compile 'org.apache.commons:commons-lang3:3.6'
     compile 'org.apache.commons:commons-collections4:4.1'
+    
     compile 'com.google.code.gson:gson:2.8.1'
     compile 'com.google.guava:guava:23.0'
     
@@ -56,24 +59,53 @@ dependencies {
     compile "io.springfox:springfox-swagger-ui:${springfoxVersion}"
     compile "io.springfox:springfox-bean-validators:${springfoxVersion}"
     
-    compile 'org.glassfish.jersey.core:jersey-client:2.26'
-    compile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.26'
-    
     asciidoctor 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.15'
     
     testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
 }
 
+
+swagger {
+    apiSource {
+        springmvc = true
+        locations = [ 'com.bmj.contentmapper.controller.ContentMappingController' ]
+        schemes = [ 'http', 'https' ]
+        host = 'localhost:8080'
+        basePath = '/'
+        info {
+            title = 'Swagger Gradle Plugin Sample'
+            version = 'v1'
+            description = 'This is a sample.'
+            termsOfService = 'http://www.example.com/termsOfService'
+            contact {
+                email = 'email@email.com'
+                name = 'Name'
+                url = 'http://www.example.com'
+            }
+            license {
+                url = 'http://www.apache.org/licenses/LICENSE-2.0.html'
+                name = 'Apache 2.0'
+            }
+        }
+        swaggerDirectory = "$buildDir/generated/swagger-ui"
+    }
+}
+
+
 convertSwagger2markup {
-    swaggerInput "http://localhost:8080/v2/api-docs"
+
+    //swaggerInput System.getProperty("swaggerJsonUrl") == null ? 
+    //            "http://localhost:8080/v2/api-docs" : System.getProperty("swaggerJsonUrl") 
+    swaggerInput "$buildDir/generated/swagger-ui/swagger.json"
     outputDir file("$buildDir/asciidoc")
     outputFile file("$buildDir/asciidoc/swagger")
     config = ['swagger2markup.markupLanguage' : 'ASCIIDOC',
-              'swagger2markup.pathsGroupedBy' : 'TAGS']
+              'swagger2markup.pathsGroupedBy' : 'TAGS',
+              'swagger2markup.extensions.dynamicOverview.contentPath' : file('src/docs/asciidoc/extensions/overview').absolutePath]
 }
 
 asciidoctorj {
-    version = '1.5.5'
+    version = '1.5.3'
 }
 
 asciidoctor {
@@ -82,8 +114,8 @@ asciidoctor {
         include 'index.adoc'
     }
     backends = ['html5', 'pdf']
-    attributes = [
-            doctype: 'book',
+    options doctype: 'book'
+    attributes = [            
             toc: 'left',
             toclevels: '3',
             numbered: '',
@@ -96,6 +128,16 @@ asciidoctor {
             generated: asciiDocOutputDir
     ]
 }
+
+/*
+asciidoctor.doLast {
+    copy {
+        from 'build/asciidoc/html5'
+        into "$projectDir"
+        include 'index.html'
+    }
+}
+*/
 
 jar {
     baseName = project_name

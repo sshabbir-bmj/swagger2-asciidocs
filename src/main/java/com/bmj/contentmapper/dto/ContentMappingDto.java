@@ -22,7 +22,7 @@ public class ContentMappingDto {
     }
 
     @NotNull(message = "notNull.ContentMappingDTO.elucidatId")
-    @ApiModelProperty(value = "unique translation elucidat id")
+    @ApiModelProperty(value = "unique translation elucidat id", required = true, example = "57b1912e1c28f")
     private String elucidatId;
 
     @NotNull(message = "notNull.ContentMappingDTO.locale")
