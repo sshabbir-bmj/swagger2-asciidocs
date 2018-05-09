@@ -1,0 +1,4 @@
+== Description
+
+This document describes the management of learning module meta-data. It is updated via the elucidat-archiver application, as it is
+responsible for managing elucidat module update/release notifications. 
