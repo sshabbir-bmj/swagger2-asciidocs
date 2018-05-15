@@ -1,11 +1,11 @@
-package com.bmj.contentmapper.service;
+package gradle.swagger.docs.service;
 
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
 
-import com.bmj.contentmapper.entity.ContentMapping;
-import com.bmj.contentmapper.repository.ContentMappingRepository;
+import gradle.swagger.docs.entity.ContentMapping;
+import gradle.swagger.docs.repository.ContentMappingRepository;
 
 /**
  * @author SSHABBIR

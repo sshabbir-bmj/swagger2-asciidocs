@@ -1,4 +1,4 @@
-package com.bmj.contentmapper.dto;
+package gradle.swagger.docs.dto;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
 import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import gradle.swagger.docs.dto.ContentMappingDto;
 
 /**
  * @author SSHABBIR
@@ -28,7 +30,7 @@ public class ContentMappingDTOTest {
     private static final String ELUCIDAT_ID = "1234";
     private static final String LOCALE = "en-gb";
 
-    private static final String JSON_TO_DESERIALIZE = "{\"elucidatId\":\""
+    private static final String JSON_TO_DESERIALIZE = "{\"projectId\":\""
 	    + ELUCIDAT_ID
 	    + "\",\"locale\":\""
 	    + LOCALE
@@ -44,9 +46,9 @@ public class ContentMappingDTOTest {
     }
 
     @Test
-    public void elucidatIdSerializes() throws IOException {
+    public void projectIdSerializes() throws IOException {
 	assertThat(this.json.write(contentMappingDto))
-		.extractingJsonPathStringValue("@.elucidatId")
+		.extractingJsonPathStringValue("@.projectId")
 		.isEqualTo(ELUCIDAT_ID);
     }
 
@@ -65,8 +67,8 @@ public class ContentMappingDTOTest {
     }
 
     @Test
-    public void elucidatIdDeserializes() throws IOException {
-	assertThat(this.json.parseObject(JSON_TO_DESERIALIZE).getElucidatId().equals(ELUCIDAT_ID));
+    public void projectIdDeserializes() throws IOException {
+	assertThat(this.json.parseObject(JSON_TO_DESERIALIZE).getProjectId().equals(ELUCIDAT_ID));
     }
 
     @Test

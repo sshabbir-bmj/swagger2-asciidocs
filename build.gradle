@@ -15,7 +15,6 @@ buildscript {
 		classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.3'
         classpath "io.github.swagger2markup:swagger2markup:${swagger2markupVersion}"
         classpath "io.github.swagger2markup:swagger2markup-import-files-ext:${swagger2markupVersion}"
-        classpath "org.asciidoctor:asciidoctorj-epub3:1.5.0-alpha.6"
 	}
 }
 
@@ -39,6 +38,10 @@ tasks.withType(JavaCompile) {
     options.compilerArgs << "-Xlint:unchecked"
 }
 
+configurations {
+    compile
+}
+
 dependencies {
     runtime "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
     
@@ -48,10 +51,6 @@ dependencies {
 
     compile 'org.postgresql:postgresql:42.1.4'
 
-    compile 'org.apache.commons:commons-lang3:3.6'
-    compile 'org.apache.commons:commons-collections4:4.1'
-    
-    compile 'com.google.code.gson:gson:2.8.1'
     compile 'com.google.guava:guava:23.0'
     
     compile 'io.swagger:swagger-core:1.5.16'
@@ -68,7 +67,7 @@ dependencies {
 swagger {
     apiSource {
         springmvc = true
-        locations = [ 'com.bmj.contentmapper.controller.ContentMappingController' ]
+        locations = [ 'gradle.swagger.docs.controller.ContentMappingController' ]
         schemes = [ 'http', 'https' ]
         host = 'localhost:8080'
         basePath = '/'
@@ -88,14 +87,12 @@ swagger {
             }
         }
         swaggerDirectory = "$buildDir/generated/swagger-ui"
+		outputFormats = ['yaml','json']
     }
 }
 
 
 convertSwagger2markup {
-
-    //swaggerInput System.getProperty("swaggerJsonUrl") == null ? 
-    //            "http://localhost:8080/v2/api-docs" : System.getProperty("swaggerJsonUrl") 
     swaggerInput "$buildDir/generated/swagger-ui/swagger.json"
     outputDir file("$buildDir/asciidoc")
     outputFile file("$buildDir/asciidoc/swagger")

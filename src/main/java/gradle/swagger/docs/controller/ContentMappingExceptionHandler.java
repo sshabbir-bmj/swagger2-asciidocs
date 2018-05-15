@@ -1,4 +1,4 @@
-package com.bmj.contentmapper.controller;
+package gradle.swagger.docs.controller;
 
 import java.util.Locale;
 
@@ -13,8 +13,8 @@ import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.bmj.contentmapper.dto.ErrorDto;
-import com.bmj.contentmapper.utils.Constants;
+import gradle.swagger.docs.dto.ErrorDto;
+import gradle.swagger.docs.utils.Constants;
 
 /**
  * @author SSHABBIR

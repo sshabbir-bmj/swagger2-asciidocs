@@ -65,15 +65,9 @@ dependencies {
     testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
 }
 
-task downloadSwaggerJSON(type: Download) {
-    src 'http://dev.elucidat-mapping.internal.tf.aws.bmjgroup.com/v2/api-docs'
-    dest buildDir
-    overwrite true
-}
-
 convertSwagger2markup {
-    dependsOn downloadSwaggerJSON
-    swaggerInput file("$buildDir/api-docs").getAbsolutePath()
+    swaggerInput System.getProperty("swaggerJsonUrl") == null ? 
+                "http://localhost:8080/v2/api-docs" : System.getProperty("swaggerJsonUrl") 
     outputDir file("$buildDir/asciidoc")
     outputFile file("$buildDir/asciidoc/swagger")
     config = ['swagger2markup.markupLanguage' : 'ASCIIDOC',
@@ -86,9 +80,9 @@ asciidoctorj {
 
 asciidoctor {
     dependsOn convertSwagger2markup
-/*    sources {
+    sources {
         include 'index.adoc'
-    }*/
+    }
     backends = ['html5', 'pdf']
     attributes = [
             doctype: 'book',

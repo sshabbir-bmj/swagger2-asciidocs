@@ -1,4 +1,4 @@
-package com.bmj.contentmapper.entity;
+package gradle.swagger.docs.entity;
 
 import java.io.Serializable;
 
@@ -14,7 +14,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "ELUCIDAT_CONTENT_MAPPING")
+@Table(name = "CONTENT_MAPPING")
 public class ContentMapping implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -27,8 +27,8 @@ public class ContentMapping implements Serializable {
     @Column(name = "MODULE_ID", nullable = false)
     private int moduleId;
 
-    @Column(name = "ELUCIDAT_ID", nullable = false)
-    private String elucidatId;
+    @Column(name = "PROJECT_ID", nullable = false)
+    private String projectId;
 
     @Column(name = "LOCALE", nullable = false)
     private String locale;
@@ -36,8 +36,8 @@ public class ContentMapping implements Serializable {
     public ContentMapping() {
     }
 
-    public ContentMapping(int moduleId, String elucidatId, String locale) {
-	this.elucidatId = elucidatId;
+    public ContentMapping(int moduleId, String projectId, String locale) {
+	this.projectId = projectId;
 	this.moduleId = moduleId;
 	this.locale = locale;
     }
@@ -54,12 +54,12 @@ public class ContentMapping implements Serializable {
 	this.moduleId = moduleId;
     }
 
-    public String getElucidatId() {
-	return elucidatId;
+    public String getProjectId() {
+	return projectId;
     }
 
-    public void setElucidatId(String elucidatId) {
-	this.elucidatId = elucidatId;
+    public void setProjectId(String projectId) {
+	this.projectId = projectId;
     }
 
     public String getLocale() {
@@ -72,6 +72,6 @@ public class ContentMapping implements Serializable {
 
     @Override
     public String toString() {
-	return getModuleId() + "," + getElucidatId() + "," + getLocale();
+	return getModuleId() + "," + getProjectId() + "," + getLocale();
     }
 }

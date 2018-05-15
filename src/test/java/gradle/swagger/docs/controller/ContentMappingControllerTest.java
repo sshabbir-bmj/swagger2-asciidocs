@@ -1,4 +1,4 @@
-package com.bmj.contentmapper.controller;
+package gradle.swagger.docs.controller;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.mockito.Matchers.any;
@@ -22,12 +22,14 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.bmj.contentmapper.dto.ContentMappingDto;
-import com.bmj.contentmapper.dto.CreateModuleDto;
-import com.bmj.contentmapper.entity.ContentMapping;
-import com.bmj.contentmapper.repository.ContentMappingRepository;
-import com.bmj.contentmapper.service.ContentMappingService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import gradle.swagger.docs.controller.ContentMappingController;
+import gradle.swagger.docs.dto.ContentMappingDto;
+import gradle.swagger.docs.dto.CreateModuleDto;
+import gradle.swagger.docs.entity.ContentMapping;
+import gradle.swagger.docs.repository.ContentMappingRepository;
+import gradle.swagger.docs.service.ContentMappingService;
 /**
  * @author SSHABBIR
  *
@@ -104,7 +106,7 @@ public class ContentMappingControllerTest {
     }
 
     @Test
-    public void createNewModuleInvalidElucidatId() throws Exception {
+    public void createNewModuleInvalidProjectId() throws Exception {
 
 	createModuleDto = new CreateModuleDto();
 	createModuleDto.setModuleId(1234);
@@ -116,7 +118,7 @@ public class ContentMappingControllerTest {
 		.andDo(print())
 		.andExpect(status().is4xxClientError())
 		.andExpect(content().contentType(APPLICATION_JSON_UTF8))
-		.andExpect(content().string(containsString("####elucidat Id cannot be empty####")));
+		.andExpect(content().string(containsString("####project Id cannot be empty####")));
     }
 
     @Test

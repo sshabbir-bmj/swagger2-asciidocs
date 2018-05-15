@@ -1,4 +1,4 @@
-package com.bmj.contentmapper.config;
+package gradle.swagger.docs.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -16,7 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
-@ComponentScan("com.bmj.contentmapper.controller")
+@ComponentScan("gradle.swagger.docs.controller")
 public class SwaggerConfiguration extends WebMvcConfigurerAdapter
 {
     @Bean

@@ -1,4 +1,4 @@
-package com.bmj.contentmapper;
+package gradle.swagger.docs;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

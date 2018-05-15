@@ -1,4 +1,4 @@
-package com.bmj.contentmapper.controller;
+package gradle.swagger.docs.controller;
 
 import javax.validation.Valid;
 
@@ -12,13 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bmj.contentmapper.dto.ContentMappingDto;
-import com.bmj.contentmapper.dto.CreateModuleDto;
-import com.bmj.contentmapper.dto.ErrorDto;
-import com.bmj.contentmapper.entity.ContentMapping;
-import com.bmj.contentmapper.service.ContentMappingService;
-import com.bmj.contentmapper.utils.Constants;
-
+import gradle.swagger.docs.dto.ContentMappingDto;
+import gradle.swagger.docs.dto.CreateModuleDto;
+import gradle.swagger.docs.dto.ErrorDto;
+import gradle.swagger.docs.entity.ContentMapping;
+import gradle.swagger.docs.service.ContentMappingService;
+import gradle.swagger.docs.utils.Constants;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

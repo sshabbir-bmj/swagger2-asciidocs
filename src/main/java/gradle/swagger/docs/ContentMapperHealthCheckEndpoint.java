@@ -1,4 +1,4 @@
-package com.bmj.contentmapper;
+package gradle.swagger.docs;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

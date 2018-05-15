@@ -1,4 +1,4 @@
-package com.bmj.contentmapper.dto;
+package gradle.swagger.docs.dto;
 
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
@@ -11,9 +11,9 @@ import io.swagger.annotations.ApiModelProperty;
  */
 public class CreateModuleDto {
 
-    @NotNull(message = "notNull.ContentMappingDTO.elucidatId")
+    @NotNull(message = "notNull.ContentMappingDTO.projectId")
     @ApiModelProperty(value = "unique translation elucidat id")
-    private String elucidatId;
+    private String projectId;
 
     @NotNull(message = "notNull.ContentMappingDTO.moduleId")
     @Digits(integer = 10, fraction = 0, message = "format.ContentMappingDTO.moduleId")
@@ -23,17 +23,17 @@ public class CreateModuleDto {
     public CreateModuleDto() {
     }
 
-    public CreateModuleDto(String elucidatId, int moduleId) {
-	this.elucidatId = elucidatId;
+    public CreateModuleDto(String projectId, int moduleId) {
+	this.projectId = projectId;
 	this.moduleId = moduleId;
     }
 
-    public String getElucidatId() {
-        return elucidatId;
+    public String getProjectId() {
+        return projectId;
     }
 
-    public void setElucidatId(String elucidatId) {
-        this.elucidatId = elucidatId;
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
     }
 
     public int getModuleId() {

@@ -1,4 +1,4 @@
-package com.bmj.contentmapper.dto;
+package gradle.swagger.docs.dto;
 
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
@@ -15,15 +15,15 @@ public class ContentMappingDto {
     public ContentMappingDto() {
     }
 
-    public ContentMappingDto(String elucidatId, String locale, int moduleId) {
-	this.elucidatId = elucidatId;
+    public ContentMappingDto(String projectId, String locale, int moduleId) {
+	this.projectId = projectId;
 	this.locale = locale;
 	this.moduleId = moduleId;
     }
 
-    @NotNull(message = "notNull.ContentMappingDTO.elucidatId")
+    @NotNull(message = "notNull.ContentMappingDTO.projectId")
     @ApiModelProperty(value = "unique translation elucidat id", required = true, example = "57b1912e1c28f")
-    private String elucidatId;
+    private String projectId;
 
     @NotNull(message = "notNull.ContentMappingDTO.locale")
     @ApiModelProperty(value = "translation locale format language(2 letter)-country(2 letter)")
@@ -35,11 +35,11 @@ public class ContentMappingDto {
     @ApiModelProperty(value = "module id encapsulating all language variants")
     private int moduleId;
 
-    public String getElucidatId() {
-        return elucidatId;
+    public String getProjectId() {
+        return projectId;
     }
-    public void setElucidatId(String elucidatId) {
-        this.elucidatId = elucidatId;
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
     }
     public String getLocale() {
         return locale;

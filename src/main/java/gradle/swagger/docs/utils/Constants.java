@@ -1,4 +1,4 @@
-package com.bmj.contentmapper.utils;
+package gradle.swagger.docs.utils;
 
 /**
  * @author SSHABBIR

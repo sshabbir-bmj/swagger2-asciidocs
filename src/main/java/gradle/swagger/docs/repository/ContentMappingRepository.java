@@ -1,9 +1,9 @@
-package com.bmj.contentmapper.repository;
+package gradle.swagger.docs.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.bmj.contentmapper.entity.ContentMapping;
+import gradle.swagger.docs.entity.ContentMapping;
 /**
  * @author SSHABBIR
  *

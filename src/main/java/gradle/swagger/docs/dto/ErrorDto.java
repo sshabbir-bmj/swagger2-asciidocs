@@ -1,4 +1,4 @@
-package com.bmj.contentmapper.dto;
+package gradle.swagger.docs.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
