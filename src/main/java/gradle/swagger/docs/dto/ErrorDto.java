@@ -7,7 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
  * @author SSHABBIR
  *
  */
-@ApiModel(value = "Message", description = "A message containing more info why the operation failed")
+@ApiModel(value = "Error Dto", description = "A message containing info about failed operation")
 public class ErrorDto {
     @ApiModelProperty(value = "error message", readOnly = true)
     private String message;

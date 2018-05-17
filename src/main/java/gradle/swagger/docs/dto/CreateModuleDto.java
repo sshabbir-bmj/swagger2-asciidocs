@@ -3,12 +3,14 @@ package gradle.swagger.docs.dto;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
  * @author SSHABBIR
  *
  */
+@ApiModel(value = "Create module dto", description = "data required to create a module")
 public class CreateModuleDto {
 
     @NotNull(message = "notNull.ContentMappingDTO.projectId")

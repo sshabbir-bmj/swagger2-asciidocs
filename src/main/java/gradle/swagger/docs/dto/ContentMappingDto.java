@@ -4,12 +4,14 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
  * @author SSHABBIR
  *
  */
+@ApiModel(value = "Content mapping dto", description = "data required to create a translation module")
 public class ContentMappingDto {
 
     public ContentMappingDto() {

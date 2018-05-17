@@ -72,13 +72,13 @@ swagger {
         host = 'localhost:8080'
         basePath = '/'
         info {
-            title = 'Swagger Gradle Plugin Sample'
+            title = 'Swagger Gradle Asciidocs and PDF Generation'
             version = 'v1'
-            description = 'This is a sample.'
-            termsOfService = 'http://www.example.com/termsOfService'
+            description = 'How to generate docs at build time'
+            termsOfService = 'http://bmj.com/terms'
             contact {
                 email = 'email@email.com'
-                name = 'Name'
+                name = 'who am I?'
                 url = 'http://www.example.com'
             }
             license {
