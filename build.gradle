@@ -98,6 +98,7 @@ convertSwagger2markup {
     outputFile file("$buildDir/asciidoc/swagger")
     config = ['swagger2markup.markupLanguage' : 'ASCIIDOC',
               'swagger2markup.pathsGroupedBy' : 'TAGS',
+			  'swagger2markup.outputLanguage' : 'DE',			  
               'swagger2markup.extensions.dynamicOverview.contentPath' : file('src/docs/asciidoc/extensions/overview').absolutePath]
 }
 
@@ -126,15 +127,14 @@ asciidoctor {
     ]
 }
 
-/*
 asciidoctor.doLast {
     copy {
-        from 'build/asciidoc/html5'
-        into "$projectDir"
-        include 'index.html'
+        from file("${asciiDocOutputDir}/html5")
+		from file("${asciiDocOutputDir}/pdf")
+        into file("${rootDir}/src/main/resources/public")
+        include '*.*'
     }
 }
-*/
 
 jar {
     baseName = project_name
@@ -142,7 +142,8 @@ jar {
     manifest {
         attributes(
             "Implementation-Title": project_name,
-            "Implementation-Version": version
+            "Implementation-Version": version,
+			"Main-Class": 'gradle.swagger.docs.Application'
         )
     }
 }

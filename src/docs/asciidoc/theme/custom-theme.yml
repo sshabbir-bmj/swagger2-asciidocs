@@ -3,7 +3,7 @@ title_page:
 
 page:
   layout: portrait
-  margin: [0.75in, 1in, 0.75in, 1in]
+  margin: [0.5in, 0.5in, 0.5in, 0.5in]
   size: A4
 base:
   font_color: #333333
@@ -21,14 +21,14 @@ link:
 outline_list:
   indent: $base_font_size * 1.5
 header:
-  height: 0.75in
+  height: 0.5in
   line_height: 1
   recto_content:
     center: '{document-title}'
   verso_content:
     center: '{document-title}'
 footer:
-  height: 0.75in
+  height: 0.5in
   line_height: 1
   recto_content:
     right: '{chapter-title} | *{page-number}*'
